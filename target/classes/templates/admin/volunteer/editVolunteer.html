@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Volunteer Registration</title>
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    	
+		<link rel="stylesheet" type="text/css" media="all" href="../static/css/admin.css" th:href="@{/css/admin.css}">
+		
+		<link rel="icon" type="image/x-icon" th:href="@{/images/LOGO_noBg.png}">
+		
+		<style>
+			body {
+				padding-top: 56px;
+				width:75%;
+				margin: auto;
+			}
+		</style>
+</head>
+
+
+<body>
+<div th:replace="fragments/admin-nav :: admin-nav"></div>
+
+
+        <div style="padding-top: 50px;">
+        
+        <a onclick="history.back()" class="link"> &#x25c0; Back </a>
+					
+				<div style="margin: 20px;"></div>
+				
+				<hr />
+				
+        	<h2>Edit Volunteer</h2>
+        	
+			<form method="post" th:action="@{/adminDashboard/updateVolunteer}" th:object="${volunteer}">
+		
+
+			<input type="hidden" name="id" th:field="*{id}" />
+			<input type="hidden" name="status" th:field="*{status}" />
+		
+			<div class="section-two">
+		
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<label> First Name:</label>
+							<input type="text" name="firstName" th:field="*{firstName}" placeholder="First Name" required/> 
+						</div>
+						<div class="col">
+							<label> Last Name: </label>
+							<input type="text" name="lastName" th:field="*{lastName}" placeholder="Last Name" required/> 
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label> Email: </label>
+							<input type="text" name="email" th:field="*{email}" placeholder="johndoe@email.com" 
+									pattern="^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+(\.[a-zA-z]{2,})+$" required />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label> Phone Number: </label>
+							<input type="tel" name="phone" th:field="*{phone}" placeholder="(000) 000-0000" required/>
+						</div> 
+					</div>
+					<div class="row">
+						<div class="col">
+							<label> Enrolled in secondary school</label>
+							<input type="radio" id="true" value="true" name="enrolledSecondary" th:field="*{enrolledSecondary}" th:checked="${enrolledPostSecondary}" /> <span>Yes</span>  <br />
+							<input type="radio" id="false" value="false" name="enrolledSecondary" th:field="*{enrolledSecondary}"  /> <span>No</span>  <br />
+						</div> 
+					</div>
+				</div>
+			</div>
+			
+			<script>
+				const email = document.getElementById("email");
+				
+				email.addEventListener('input', function (event) {
+					if (event.target.validity.patternMismatch) {
+						event.target.setCustomValidity('Please enter a valid email address');
+					} else {
+						event.target.setCustomValidity('');
+					}
+				})
+			</script> 	
+		
+		
+			<hr id="section-2">
+
+			<div class="section-two" >
+				<label> Position:</label>
+					<input type="checkbox" name="position" th:field="*{position}" value="Kitchen" /> Kitchen <br />
+					<input type="checkbox" name="position" th:field="*{position}" value="Delivery" /> Delivery <br />
+
+				<label> Availability:</label>
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Monday 11:00am - 1:30pm" /> <span>Monday 11:00am - 1:30pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Monday 1:30pm - 4:00pm"  /> <span>Monday 1:30pm - 4:00pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Tuesday 1:00 pm- 4:00pm" /> <span>Tuesday 1:00 pm- 4:00pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Tuesday 4:00 pm- 6:00pm" /> <span>Tuesday 4:00 pm- 6:00pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Wednesday 11:00am - 1:30pm"  /> <span>Wednesday 11:00am - 1:30pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Wednesday 1:30pm - 4:00pm"  /> <span>Wednesday 1:30pm - 4:00pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Thursday 1:00 pm- 4:00pm"  /> <span>Thursday 1:00 pm- 4:00pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Thursday 4:00 pm- 6:00pm"  /> <span>Thursday 4:00 pm- 6:00pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Friday 11:00am - 1:30pm"  /> <span>Friday 11:00am - 1:30pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Friday 1:30pm - 4:00pm"  /> <span>Friday 1:30pm - 4:00pm</span> <br />
+
+
+				<label> Delivery Area:</label>
+					<input type="checkbox" name="volunteerArea" th:field="*{volunteerArea}" value="Milton"  /> <span>Milton</span> <br />
+					<input type="checkbox" name="volunteerArea" th:field="*{volunteerArea}" value="Halton"  /> <span>Halton</span> <br />
+					<input type="checkbox" name="volunteerArea" th:field="*{volunteerArea}" value="Oakville"  /> <span>Oakville</span>  <br />
+			</div>
+			
+					
+			<input type="submit" value="Save" style="margin-bottom: 30px;" id="checkBtn"/><br /><br />
+			
+		</form>
+		
+        </div>
+
+		
+   
+</body>
+</html>

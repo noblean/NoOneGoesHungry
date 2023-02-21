@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>NOGH &mdash; Volunteer Registration</title>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    	
+		<link rel="icon" type="image/x-icon" th:href="@{/images/LOGO_noBg.png}">
+		
+		<link rel="stylesheet" type="text/css" media="all" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">	
+		<link rel="stylesheet" type="text/css" media="all" href="../static/css/style.css" th:href="@{/css/style.css}">
+		
+</head>
+
+
+<body>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    $('#checkBtn').click(function() {
+      checked = $("input[name=position]:checked").length;
+      if(!checked) {
+        alert("You must check at least one position.");
+        
+        return false;
+      }
+      checked2 = $("input[name=availability]:checked").length;
+      if(!checked2) {
+        alert("You must check at least one day of availability.");
+        return false;
+      }
+    /*   checked4 = $("input[name=volunteerArea]:checked").length;
+      if(!checked4) {
+        alert("You must check at least one volunteer area.");
+        return false;
+      } */
+      checked5 = $("input[name=enrolledSecondary]:checked").length;
+      if(!checked5) {
+        alert("You must select if you're enrolled in secondary school");
+        return false;
+      }
+    });
+});
+
+$(window).on('beforeunload', function() {
+	sessionStorage.setItem("scrollposition", $(window).scrollTop());
+});
+
+$(window).on('load', function() {
+	$(window).scrollTop(sessionStorage.getItem("scrollposition"));
+});
+</script>
+
+
+<div th:replace="fragments/nav :: nav"></div>
+
+<div class="row" id="body-row">
+    <!-- Sidebar -->
+    <div id="sidebar-container" class="sidebar-expanded d-none d-md-block col-2">
+        <div class="list-group sticky-top sticky-offset">
+
+			<!--	------- SECTION ONE ----------  -->
+			<div class="side-text" style="margin-top: 50px;">
+				<a href="#section-1" class="page-nav">
+				
+				  <!-- SECTION FILLED -->
+					<span id="section1-filled"  style="display: none;">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+							<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+						</svg>
+					</span>	
+					
+					 <!-- SECTION EMPTY -->
+					<span id="section1-empty">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16" style="display: inline;">
+							<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+						</svg> 
+					</span>
+					
+					 &nbsp;
+					<span>Section One</span>
+					<span class="side-border-left">
+						<span class="progress-desc">Select type of volunteer position</span>
+					</span>
+				</a>
+			</div>
+			
+			<!--	------- SECTION TWO ----------  -->
+			<div class="side-text">
+				<a href="#section-2" class="page-nav">
+				
+				  <!-- SECTION FILLED -->
+					<span id="section2-filled"  style="display: none;">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+							<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+						</svg>
+					</span>	
+					
+					 <!-- SECTION EMPTY -->
+					<span id="section2-empty">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+							<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+						</svg> 
+					</span>
+					
+					 &nbsp;
+					<span>Section Two</span>
+					<span class="side-border-left">
+						<span class="progress-desc">Select your availability and volunteer location</span>
+					</span>
+				</a>
+			</div>
+        	
+        	<!--	------- SECTION THREE ----------  -->
+			<div class="side-text">
+				<a href="#section-3" class="page-nav">
+				
+				  <!-- SECTION FILLED -->
+					<span id="section3-filled"  style="display: none;">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+							<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+						</svg>
+					</span>	
+					
+					 <!-- SECTION EMPTY -->
+					<span id="section3-empty">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+							<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+						</svg> 
+					</span>
+					
+					 &nbsp;
+					<span>Section Three</span>
+					<span class="border-left-none" >
+						<span class="progress-desc">Input your personal information</span>
+					</span>
+				</a>
+			</div>
+
+        </div> <!-- List Group END-->
+    </div> <!-- Side bar-container END -->
+
+    <!-- MAIN -->
+    <div class="col py-3 main-content">
+
+        <h1 style="padding-top: 50px;"  id="section-1">
+            Register to Volunteer
+        </h1>
+
+
+        <div class="card" >
+            <div class="card-body">    
+				<p>	
+					<b>Thanks for your inquiry into volunteering to help out with No One Goes Hungry!</b>
+				</p>
+                <p th:utext="${donation.volunteer}">
+					We welcome people to deliver and to work in the kitchen, doing basic cooking. We ask volunteers to wear closed-toe shoes, short-sleeved shirts (no sleeveless shirts or short shorts) and masks, of course.
+					No experience necessary, just willing hands to help others.
+					We look forward to having you as a member of our team. 
+				</p>
+				<p> * indicates required fields</p>
+                
+            </div>
+        </div>
+
+		<form method="post" th:action="@{/volunteer/register}" th:object="${volunteer}">
+		
+			<input type="hidden" name="id" th:field="*{id}" />
+		
+			<div class="section-one">
+				<h5> Section One - Select type of volunteer position:</h5>
+				
+				<label> What position would you like to volunteer for? *</label>
+					<input type="checkbox" name="position" th:field="*{position}" value="Kitchen" onclick="sectionOne()"/> Kitchen <br />
+					<input type="checkbox" name="position" th:field="*{position}" value="Delivery" onclick="sectionOne()"/> Delivery <br />
+			</div>
+				<script>
+					function sectionOne() {
+			            let checkboxes = document.querySelectorAll('input[name="position"]:checked');
+			            let values = [];
+			            checkboxes.forEach((checkbox) => {
+			                values.push(checkbox.value);
+			            });
+			        
+			            var oneF = document.getElementById("section1-filled");
+						var oneE = document.getElementById("section1-empty");
+					  
+						if (values[0] != null) {
+							  oneF.style.display = "inline";
+							  oneE.style.display= "none";
+						}else {
+							  oneF.style.display = "none";
+							  oneE.style.display= "inline";
+						}
+					}		
+				</script>
+		
+			<hr id="section-2">
+
+			<div class="section-two" >
+				<h5> Section Two - Select your availability and volunteer location: </h5>
+
+				<label> When are you available to volunteer with us? *</label>
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Monday 11:00am - 1:30pm" onclick="sectionTwo()"/> <span>Monday 11:00am - 1:30pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Monday 1:30pm - 4:00pm" onclick="sectionTwo()" /> <span>Monday 1:30pm - 4:00pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Tuesday 1:00 pm- 4:00pm" onclick="sectionTwo()" /> <span>Tuesday 1:00 pm- 4:00pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Tuesday 4:00 pm- 6:00pm" onclick="sectionTwo()" /> <span>Tuesday 4:00 pm- 6:00pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Wednesday 11:00am - 1:30pm" onclick="sectionTwo()" /> <span>Wednesday 11:00am - 1:30pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Wednesday 1:30pm - 4:00pm" onclick="sectionTwo()" /> <span>Wednesday 1:30pm - 4:00pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Thursday 1:00 pm- 4:00pm" onclick="sectionTwo()" /> <span>Thursday 1:00 pm- 4:00pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Thursday 4:00 pm- 6:00pm" onclick="sectionTwo()" /> <span>Thursday 4:00 pm- 6:00pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Friday 11:00am - 1:30pm" onclick="sectionTwo()" /> <span>Friday 11:00am - 1:30pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Friday 1:30pm - 4:00pm" onclick="sectionTwo()" /> <span>Friday 1:30pm - 4:00pm</span> <br />
+
+
+				<label> Which area would you like to volunteer in? (for delivery)</label>
+					<input type="checkbox" name="volunteerArea" th:field="*{volunteerArea}" value="Milton"  onclick="sectionTwo()"/> <span>Milton</span> <br />
+					<input type="checkbox" name="volunteerArea" th:field="*{volunteerArea}" value="Halton"  onclick="sectionTwo()"/> <span>Halton</span> <br />
+					<input type="checkbox" name="volunteerArea" th:field="*{volunteerArea}" value="Oakville"  onclick="sectionTwo()"/> <span>Oakville</span>  <br />
+			</div>
+			
+				<script>
+					function sectionTwo() {
+					  
+					    let group1 = document.querySelectorAll('input[name="availability"]:checked');
+				
+					    let group3 = document.querySelectorAll('input[name="volunteerArea"]:checked');
+					    
+			            let values1 = [];
+			            group1.forEach((checkbox) => {
+			                values1.push(checkbox.value);
+			            });
+			            
+			            
+			            /*  Check if applicant has filled out volunteer area section, but can leave blank if they are working in the kitchen*/
+			            let values2 = [];
+			            let positionOptions = document.querySelectorAll('input[name="position"]:checked');
+			            positionOptions.forEach((position) => {
+			            	 if(position.value === "Delivery"){
+			            		 values2.push(position.value);
+			            	 }
+			            });
+			           
+			            let values3 = [];
+			            group3.forEach((checkbox) => {
+			                values3.push(checkbox.value);
+			            });
+			            
+			            var twoF = document.getElementById("section2-filled");
+						var twoE = document.getElementById("section2-empty");
+					  
+						if (values1[0] != null && values3[0] != null || values1[0] != null && values2[0] == null) {
+							twoF.style.display = "inline";
+							twoE.style.display= "none";
+						}else {
+							twoF.style.display = "none";
+							twoE.style.display= "inline";
+						}
+					}
+				</script>
+
+			<hr id="section-3">
+
+			<div class="section-three" >
+				<h5> Section Three - Input your personal information:</h5>
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<label> First Name * </label>
+							<input type="text" name="firstName" th:field="*{firstName}" placeholder="First Name" required/> 
+						</div>
+						<div class="col">
+							<label> Last Name * </label>
+							<input type="text" name="lastName" th:field="*{lastName}" placeholder="Last Name" required/> 
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label> Email * </label>
+							<input type="text" name="email" id="email" th:field="*{email}" placeholder="johndoe@email.com" 
+								   pattern="^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+(\.[a-zA-z]{2,})+$" required />
+							<p class="emailerror" th:errors="*{email}"></p>  
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label> Phone Number * </label>
+							<input type="tel" name="phone" th:field="*{phone}" placeholder="(000) 000-0000" required/>
+						</div> 
+					</div>
+					<div class="row">
+						<div class="col">
+							<label>  Are you currently enrolled in secondary school? *</label>
+							<input type="radio" id="true" value="true" name="enrolledSecondary" th:field="*{enrolledSecondary}" th:checked="${enrolledPostSecondary}" onclick="sectionThree()"/> <span>Yes</span>  <br />
+							<input type="radio" id="false" value="false" name="enrolledSecondary" th:field="*{enrolledSecondary}" onclick="sectionThree()" /> <span>No</span>  <br />
+						</div> 
+					</div>
+				</div>
+			</div>
+			<script>
+				const email = document.getElementById("email");
+				
+				email.addEventListener('input', function (event) {
+					if (event.target.validity.patternMismatch) {
+						event.target.setCustomValidity('Please enter a valid email address');
+					} else {
+						event.target.setCustomValidity('');
+					}
+				})
+			</script>
+			
+			<script>
+				function sectionThree() {
+				  var sF = document.getElementById("section3-filled");
+				  var sE = document.getElementById("section3-empty");
+				  
+				  if (sF.style.display === "none") {
+					  sF.style.display = "inline";
+					  sE.style.display= "none";
+				  }
+				}		
+			</script>
+					
+			<input type="submit" value="Submit" style="margin-bottom: 30px;" id="checkBtn"/><br /><br />
+		</form>
+		
+    </div>
+   
+
+</div>	
+
+
+</body>
+
+<div th:replace="fragments/footer :: footer"></div>
+</html>

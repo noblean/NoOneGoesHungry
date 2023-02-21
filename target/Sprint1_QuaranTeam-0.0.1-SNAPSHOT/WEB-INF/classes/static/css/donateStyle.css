@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html{
+	padding: 0;
+	margin: 0;
+	font-family: 'Lato', sans-serif;
+}
+
+h1 {
+	font-family: 'Playfair Display', serif;
+}
+
+h2 {
+	font-family: 'Playfair Display', serif;
+}
+
+nav{
+ 	background-color: #151226; 
+}
+
+body {
+	padding-top: 120px;
+	font-size: 15px;
+	background-color: #F2F2F2;
+}
+
+
+
+.section{
+	width: 90%;
+	margin: auto;
+	display: flex;
+	
+}
+
+.one{
+	width: 25%;
+	margin-left:100px;
+}
+
+.two{
+	margin-top: 50px;
+	width: 60%;
+	max-width: 700px;
+	padding: 20px;
+}
+
+h1{
+	margin-top: 20px;
+	padding-bottom: 10px;
+	color: #2A9D8F;
+}
+
+h5{
+	color: #2A9D8F;
+}
+
+.section2{
+	display: flex;
+	width: 80%;
+	margin: auto;
+	
+}
+
+.s2-one{
+	padding-top: 6px;
+	width: 75px;
+}
+
+.s2-two{
+	padding-top: 5px;
+	width: 80%;
+}
+
+
+.donation-meter {
+  margin-left: 30px;
+  width: 100px;
+
+}
+.donation-meter .glass {
+  background: #fff;
+  border-radius: 100px 100px 0 0;
+  display: block;
+  height: 300px;
+  margin: 0 36px 11px;
+  padding: 0px;
+  position: relative;
+  width: 26px;
+  border: solid black 3px;
+}
+.donation-meter .amount {
+  background-image:linear-gradient(#2E8B57 , orange);
+  border-radius: 100px;
+  display: block;
+  width: 20px;
+  position: absolute;
+  bottom: 1px;
+  z-index: 3;
+}
+.donation-meter strong {
+  display: block;
+  text-align: center;
+}
+.donation-meter .goal {
+  font-size: 25px;
+  margin-bottom:10px;
+}
+.donation-meter .total {
+  font-size: 16px;
+  position: absolute;
+  right: 40px;
+}
+
+.bulb {
+  background: #fff;
+  border-radius: 100px;
+  display: block;
+  height: 56px;
+  margin: 0 36px 11px;
+  padding: 0px;
+  position: relative;
+  top: -20px;
+  right: 15px;
+  width: 56px;
+
+  border: solid black 3px;
+}
+.bulb .red-circle {
+  background: orange;
+  border-radius: 100px;
+  display: block;
+  height: 50px;
+  width: 50px;
+}
+.bulb .filler {
+  background: orange;
+  border-radius: 100px 100px 0 0;
+  display: block;
+  height: 35px;
+  width: 20px;
+  position: relative;
+  top: -65px;
+  right: -15px;
+  z-index: 0;
+}
+
+.button {
+	  background-color: #2A9D8F; 
+	  border: none;
+	  color: white;
+	  padding: 10px 32px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	  border-radius: 5px;
+}
+
+.button:hover {
+	 opacity: 0.6;
+}

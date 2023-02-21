@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>NOGH &mdash; Meal Registration</title>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    	
+		<link rel="stylesheet" type="text/css" media="all" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
+		<link rel="stylesheet" type="text/css" media="all" href="../static/css/style.css" th:href="@{/css/style.css}">
+
+		<link rel="icon" type="image/x-icon" th:href="@{/images/LOGO_noBg.png}">
+</head>
+
+
+<body>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    $('#checkBtn').click(function() {
+    	
+      dietaryOption = $("input[name=dietaryOption]:checked").length;
+      city = $("input[name=city]:checked").length;
+      
+      if( !dietaryOption || !city) {
+        alert("Please fill out all required fields");
+        return false;
+      }
+    });
+});
+</script>
+
+
+
+<div th:replace="fragments/nav :: nav"></div>
+
+<div class="row" id="body-row">
+    <!-- Sidebar -->
+    <div id="sidebar-container" class="sidebar-expanded d-none d-md-block col-2 ">
+        <div class="list-group sticky-top sticky-offset">
+
+			<!--	------- SECTION ONE ----------  -->
+			<div class="side-text" style="margin-top: 50px;">
+				<a href="#section-1" class="page-nav">
+				
+				  <!-- SECTION FILLED -->
+					<span id="section1-filled"  style="display: none;">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+							<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+						</svg>
+					</span>	
+					
+					 <!-- SECTION EMPTY -->
+					<span id="section1-empty">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16" style="display: inline;">
+							<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+						</svg> 
+					</span>
+					
+					 &nbsp;
+					<span>Section One</span>
+					<span class="side-border-left">
+						<span class="progress-desc">Enter meal recipients personal information</span>
+					</span>
+				</a>
+			</div>
+			
+			<!--	------- SECTION TWO ----------  -->
+			<div class="side-text">
+				<a href="#section-2" class="page-nav">
+				
+				  <!-- SECTION FILLED -->
+					<span id="section2-filled"  style="display: none;">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+							<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+						</svg>
+					</span>	
+					
+					 <!-- SECTION EMPTY -->
+					<span id="section2-empty">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+							<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+						</svg> 
+					</span>
+					
+					 &nbsp;
+					<span>Section Two</span>
+					<span class="side-border-left">
+						<span class="progress-desc">Enter any dietary restrictions </span>
+					</span>
+				</a>
+			</div>
+        	
+        	<!--	------- SECTION THREE ----------  -->
+			<div class="side-text">
+				<a href="#section-3" class="page-nav">
+				
+				  <!-- SECTION FILLED -->
+					<span id="section3-filled"  style="display: none;">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+							<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+						</svg>
+					</span>	
+					
+					 <!-- SECTION EMPTY -->
+					<span id="section3-empty">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+							<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+						</svg> 
+					</span>
+					
+					 &nbsp;
+					<span>Section Three</span>
+					<span class="border-left-none" >
+						<span class="progress-desc">Input household information</span>
+					</span>
+				</a>
+			</div>
+
+        </div> <!-- List Group END-->
+    </div> <!-- Side bar-container END -->
+
+    <!-- MAIN -->
+    <div class="col py-3 main-content">
+
+        <h1 style="padding-top: 50px;"  id="section-1">
+            Meal Registration
+        </h1>
+
+
+        <div class="card" >
+            <div class="card-body">    
+                <p>
+					NOGH rescues food and transforms it into meals to distribute to the community, 
+					as well as creates grocery packages filled with produce, bread, fresh meat, 
+					dry goods and dairy. The rescued food is delivered to a designated kitchen where 
+					volunteers separate the usable food from the waste, after doing so the waste is 
+					put aside to be used as livestock food. 
+				</p>
+				<p th:utext="${donation.meals}">
+					We would like to help out everyone in need, unfortunately our operations limit us currently to only the regions Milton, Halton, and Oakville in Ontario, Canada. Please sign up below and we will get back to you with more information!
+				</p>
+				<p> * indicates required fields</p>
+                
+            </div>
+        </div>
+
+		<form method="post" th:action="@{/customer/register}" th:object="${customer}">
+		
+			<input type="hidden" name="id" th:field="*{id}" />
+		
+			<div class="section-one">
+				<h5> Section One - Meal Recipient Information:</h5>
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<label> Meal Recipient's First Name *</label>
+							<input type="text" name="firstName" th:field="*{firstName}" placeholder="First Name" required/> 
+						</div>
+						<div class="col">
+							<label> Meal Recipient's Last Name * </label>
+							<input type="text" name="lastName" th:field="*{lastName}" placeholder="Last Name" required/> 
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label> Meal Recipient's Email * </label>
+							<input type="text" name="email" th:field="*{email}" placeholder="johndoe@email.com" 
+								   pattern="^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+(\.[a-zA-z]{2,})+$" required/> 
+							<p class="emailerror" th:errors="*{email}"></p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label> Meal Recipient's Phone Number * </label>
+							<input type="tel" name="phone" th:field="*{phone}" placeholder="(000) 000-0000" required/>
+						</div> 
+					</div>
+				</div>
+				
+			</div>
+			
+			<script>
+				const email = document.getElementById("email");
+				
+				email.addEventListener('input', function (event) {
+					if (event.target.validity.patternMismatch) {
+						event.target.setCustomValidity('Please enter a valid email address');
+					} else {
+						event.target.setCustomValidity('');
+					}
+				})
+			</script>
+			
+			<script>
+
+			document.addEventListener('keyup', check);
+			
+				function check(){
+					if(document.getElementById('phone').value != '' 
+							&& document.getElementById('email').value != ''
+							&& document.getElementById('firstName').value != ''
+							&& document.getElementById('lastName').value != ''){
+						section1()
+					}else{
+						var sF = document.getElementById("section1-filled");
+						 var sE = document.getElementById("section1-empty");
+						  
+						  sF.style.display = "none";
+						  sE.style.display= "inline";
+					  
+					}
+				}
+			
+				function section1() {
+				  var sF = document.getElementById("section1-filled");
+				  var sE = document.getElementById("section1-empty");
+				  
+				  if (sF.style.display === "none") {
+					  sF.style.display = "inline";
+					  sE.style.display= "none";
+				  }
+				}		
+				
+			</script>
+		
+			<hr id="section-2">
+
+			<div class="section-two" >
+				<h5> Section Two - Dietary Restrictions: </h5>
+
+				<label> Are there any dietary restrictions? <span class="small-font">(if not listed please specify in accommodations section) * </span></label>
+					<input type="checkbox" name="dietaryOption" th:field="*{dietaryOption}" value="Vegetarian" onclick="sectionTwo()"/> <span>Vegetarian</span> <br />
+					<input type="checkbox" name="dietaryOption" th:field="*{dietaryOption}" value="Halal" onclick="sectionTwo()"/> <span>Halal</span> <br />	
+					<input type="checkbox" name="dietaryOption" th:field="*{dietaryOption}" value="None" onclick="sectionTwo()"/> <span>None/None of the above</span> <br />		
+
+				<label> Would you like to request any accommodations?</label>
+					<textarea name="accommodations" th:field="*{accommodations}"> </textarea><br />
+					
+				
+			</div>
+			
+				<script>
+					function sectionTwo() {
+						
+						let checkboxes = document.querySelectorAll('input[name="dietaryOption"]:checked');
+				            
+					 	let values = [];
+			            checkboxes.forEach((checkbox) => {
+			                values.push(checkbox.value);
+			            });
+				        
+			            var filled = document.getElementById("section2-filled");
+						var empty = document.getElementById("section2-empty");
+					  
+						if (values[0] != null) {
+							filled.style.display = "inline";
+							empty.style.display= "none";
+						}else {
+							filled.style.display = "none";
+							 empty.style.display= "inline";
+						}
+					 
+						
+					}
+				</script>
+
+			<hr id="section-3">
+
+			<div class="section-three" >
+				<h5> Section Three - Household Information:</h5>
+				
+				<div class="container">
+
+					<div class="row">
+						<div class="col">
+							<label> Delivery Address * </label>
+							<input type="text" name="address" th:field="*{address}"  required/> 
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label>Postal Code * </label>
+							<input type="text" name="postal" th:field="*{postal}"  required/> 
+						</div>
+						<div class="col">
+							
+							
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label>How many are in the household? * </label>
+							<input type="number" name="numInHousehold" th:field="*{numInHousehold}" required/> 
+						</div>
+						<div class="col">
+							
+							
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label>City *</label>
+								<input type="radio" name="city" th:field="*{city}" value="Milton"  onclick="section3()"/> <span>Milton, Ontario</span> <br />
+								<input type="radio" name="city" th:field="*{city}" value="Halton"  onclick="section3()"/> <span>Halton, Ontario</span> <br />
+								<input type="radio" name="city" th:field="*{city}" value="Oakville"  onclick="section3()"/> <span>Oakville, Ontario</span>  <br />
+						</div> 
+					</div>			
+				</div>
+			</div>
+			
+			<script>
+				function section3() {
+				  var sF = document.getElementById("section3-filled");
+				  var sE = document.getElementById("section3-empty");
+				  
+				  if (sF.style.display === "none") {
+					  sF.style.display = "inline";
+					  sE.style.display= "none";
+				  }
+				}		
+			</script>
+
+					
+			<input type="submit" value="Submit" style="margin-bottom: 30px;" id="checkBtn"/><br /><br />
+		</form>
+		
+    </div>
+   
+
+</div>	
+
+
+</body>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</html>

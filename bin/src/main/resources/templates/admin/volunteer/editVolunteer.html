@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Volunteer Registration</title>
+
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" media="all" href="../static/css/admin.css" th:href="@{/css/admin.css}">
+		
+		<link rel="icon" type="image/x-icon" th:href="@{/images/LOGO_noBg.png}">
+		
+		<style>
+			body {
+				padding-top: 56px;
+				width:75%;
+				margin: auto;
+			}
+		</style>
+</head>
+
+
+<body>
+<!-- NavBar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-none fixed-top">
+  <div class="container">
+    <a class="navbar-brand" th:href="@{/}">
+        <img th:src="@{/images/LOGO_noBg.png}" width="60" height="40" class="d-inline-block align-top" alt="" style="padding-left: 20px">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/volunteer}">Volunteer Registration</a>
+        </li>
+	     <li class="nav-item">
+	        <a class="nav-link" th:href="@{/customer}">Meal Registration</a>
+	     </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">Donate</a>
+	     </li>
+	      <li class="nav-item">
+	        <a class="nav-link active" aria-current="page" th:href="@{/login}">Login</a>
+	     </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- NavBar END -->
+
+
+
+        <div style="padding-top: 50px;">
+        
+        <a onclick="history.back()" class="link"> &#x25c0; Back </a>
+					
+				<div style="margin: 20px;"></div>
+				
+				<hr />
+				
+        	<h2>Edit Volunteer</h2>
+        	
+			<form method="post" th:action="@{/updateVolunteer}" th:object="${volunteer}">
+		
+
+			<input type="hidden" name="id" th:field="*{id}" />
+			<input type="hidden" name="status" th:field="*{status}" />
+		
+			<div class="section-two">
+		
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<label> First Name:</label>
+							<input type="text" name="firstName" th:field="*{firstName}" placeholder="First Name" required/> 
+						</div>
+						<div class="col">
+							<label> Last Name: </label>
+							<input type="text" name="lastName" th:field="*{lastName}" placeholder="Last Name" required/> 
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label> Email: </label>
+							<input type="text" name="email" th:field="*{email}" placeholder="johndoe@email.com" required/> 
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label> Phone Number: </label>
+							<input type="tel" name="phone" th:field="*{phone}" placeholder="(000) 000-0000" required/>
+						</div> 
+					</div>
+					<div class="row">
+						<div class="col">
+							<label> Enrolled in secondary school</label>
+							<input type="radio" id="true" value="true" name="enrolledSecondary" th:field="*{enrolledSecondary}" th:checked="${enrolledPostSecondary}" /> <span>Yes</span>  <br />
+							<input type="radio" id="false" value="false" name="enrolledSecondary" th:field="*{enrolledSecondary}"  /> <span>No</span>  <br />
+						</div> 
+					</div>
+				</div>
+			</div>
+				
+		
+		
+			<hr id="section-2">
+
+			<div class="section-two" >
+				<label> Position:</label>
+					<input type="checkbox" name="position" th:field="*{position}" value="Kitchen" /> Kitchen <br />
+					<input type="checkbox" name="position" th:field="*{position}" value="Delivery" /> Delivery <br />
+
+				<label> Availability:</label>
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Monday 11:00am - 1:30pm" /> <span>Monday 11:00am - 1:30pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Monday 1:30pm - 4:00pm"  /> <span>Monday 1:30pm - 4:00pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Tuesday 1:00 pm- 4:00pm" /> <span>Tuesday 1:00 pm- 4:00pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Tuesday 4:00 pm- 6:00pm" /> <span>Tuesday 4:00 pm- 6:00pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Wednesday 11:00am - 1:30pm"  /> <span>Wednesday 11:00am - 1:30pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Wednesday 1:30pm - 4:00pm"  /> <span>Wednesday 1:30pm - 4:00pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Thursday 1:00 pm- 4:00pm"  /> <span>Thursday 1:00 pm- 4:00pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Thursday 4:00 pm- 6:00pm"  /> <span>Thursday 4:00 pm- 6:00pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Friday 11:00am - 1:30pm"  /> <span>Friday 11:00am - 1:30pm</span> <br />
+					<input type="checkbox" name="availability" th:field="*{availability}" value="Friday 1:30pm - 4:00pm"  /> <span>Friday 1:30pm - 4:00pm</span> <br />
+
+
+				<label> Delivery Area:</label>
+					<input type="checkbox" name="volunteerArea" th:field="*{volunteerArea}" value="Milton"  /> <span>Milton</span> <br />
+					<input type="checkbox" name="volunteerArea" th:field="*{volunteerArea}" value="Halton"  /> <span>Halton</span> <br />
+					<input type="checkbox" name="volunteerArea" th:field="*{volunteerArea}" value="Oakville"  /> <span>Oakville</span>  <br />
+			</div>
+			
+					
+			<input type="submit" value="Save" style="margin-bottom: 30px;" id="checkBtn"/><br /><br />
+			
+		</form>
+		
+        </div>
+
+		
+   
+</body>
+</html>

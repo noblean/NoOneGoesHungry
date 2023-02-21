@@ -1,0 +1,43 @@
+<!-- NavBar -->
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<nav class="navbar navbar-expand-md navbar-dark bg-none fixed-top" th:fragment="admin-nav">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/volunteer}">Volunteer</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/customer}">Receive Meals</a>
+            </li>
+        </ul>
+    </div>
+    <div class="mx-auto order-0">
+        <a class="navbar-brand" th:href="@{/}">
+      <img th:src="@{/images/logo-01.png}" width="75" height="40" class="d-inline-block align-top" alt="" style="padding-left: 20px">
+   </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+         <li class="nav-item">
+                <a class="nav-link" th:href="@{/about}">About Us</a>
+            </li>
+             <li class="nav-item ">
+                <a class="nav-link" th:href="@{/donate}">Donate </a>
+            </li>
+        	 <li class="nav-item active">
+                <a class="nav-link" th:href="@{/login?logout}">Logout </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+</html>

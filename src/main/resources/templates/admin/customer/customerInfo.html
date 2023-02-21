@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>NOGH &mdash; Admin</title>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+		
+		<link rel="stylesheet" type="text/css" media="all" href="../static/css/admin.css" th:href="@{/css/admin.css}">
+
+		<link rel="icon" type="image/x-icon" th:href="@{/images/LOGO_noBg.png}">
+</head>
+
+
+<body>
+<div th:replace="fragments/admin-nav :: admin-nav"></div>
+
+
+		
+<div class="row" id="body-row">
+    <!-- Sidebar -->
+     <div id="sidebar-container" class="sidebar col-3">
+        <div class="list-group sticky-top sticky-offset">
+       
+       	
+			<h1 class="side-text" style="margin-top: 70px;">
+					<span>ADMIN</span>
+			</h1>
+				
+			<!--	------- SECTION ONE ----------  -->
+			<div class="side-text" style="margin-top: 15px;">
+				<a th:href="@{/adminDashboard/volunteerApplicants}" class="page-nav link">
+					<span>Volunteer</span>
+				</a>
+			</div>
+			
+			<!--	------- SECTION TWO ----------  -->
+				<div class="side-text" style="margin-top: 15px;">
+				<a th:href="@{/adminDashboard/customerApplicants}" class="page-nav active-link">
+					<span>Meal Recipients</span>
+				</a>
+			</div>
+        	
+        	<!--	------- SECTION THREE ----------  -->
+			<div class="side-text" style="margin-top: 15px;">
+				<a th:href="@{/adminDashboard/userList}" class="page-nav link">
+					<span>Admin Users</span>
+				</a>
+			</div>
+			
+			<!--	------- SECTION FOUR ----------  -->
+			<div class="side-text" style="margin-top: 15px;">
+				<a th:href="@{/adminDashboard/manage}" class="page-nav link">
+					<span>Manage Website</span>
+				</a>
+			</div>
+
+
+    </div>
+    </div> <!-- Side bar-container END -->
+
+
+    <!-- MAIN -->
+    <div class="col-8 main-content">
+
+  
+        	<!-- <h2 style="margin-top: 50px; margin-bottom: 50px;">Admin Dashboard</h2> -->
+			<div style="margin-top: 90px; margin-bottom: 50px;">
+				<a onclick="history.back()" class="link"> &#x25c0; Back </a>
+				
+				<a th:href="@{/adminDashboard/approveCustomer/{id}(id=${customer.id})}" class="button"> Approve </a>
+				<a th:href="@{/adminDashboard/rejectCustomer/{id}(id=${customer.id})}" style="float: right; margin-top: 3px; margin-right: 25px;">Waitlist</a>
+				
+				<div style="margin: 20px;"></div>
+				
+				<hr />
+				
+				<h3 style="margin-top: 50px;">Meal Application</h3>
+				
+				
+				
+				<table style="width: 100%;">
+					<thead>
+						<tr>
+							<th style="width: 150px;"></th>
+							<th> <span style="float: right;">Status: <span th:text="${customer.status}"></span> </span></th>
+						</tr>
+					</thead>
+					<tbody >
+			
+						<tr> 
+								<td> <b>Name:</b> </td>
+								<td> 
+									<span th:text="${customer.firstName}"></span> <span th:text="${customer.lastName}"></span>
+								</td>
+							</tr>
+		
+								
+							<tr> 
+								<td> <b>Email:</b> </td>
+								<td th:text="${customer.email}"></td>
+							</tr>
+							<tr> 
+								<td> <b>Phone:</b> </td>
+								<td th:text="${customer.phone}"></td>
+							</tr>
+							<tr> 
+								<td> <b>Dietary Restriction:</b> </td>
+								<td th:text="${customer.dietaryOption}"></td>
+							</tr>
+							<tr> 
+								<td> <b>Address:</b> </td>
+								<td>
+									<span th:text="${customer.address}"></span>,
+									<span th:text="${customer.city}"></span>
+									<span th:text="${customer.postal}"></span>
+								</td>
+							</tr>
+							<tr> 
+								<td> <b>Household Number:</b> </td>
+								<td th:text="${customer.numInHousehold}"></td>
+							</tr>
+							<tr> 
+								<td> <b>Accommodations:</b> </td>
+								<td th:text="${customer.accommodations}"></td>
+							</tr>
+							
+							
+							
+						
+					</tbody>
+				</table>
+				<a  th:href="@{/adminDashboard/deleteCustomer/{id}(id=${customer.id})}" class="cancel">Delete Application</a>
+        	</div>
+		
+     </div>
+
+        
+		
+</div>
+   
+
+
+		
+   
+</body>
+</html>

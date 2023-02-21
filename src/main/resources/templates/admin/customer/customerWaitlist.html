@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>NOGH &mdash; Admin</title>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+		
+		<link rel="stylesheet" type="text/css" media="all" href="../static/css/admin.css" th:href="@{/css/admin.css}">
+
+		<link rel="icon" type="image/x-icon" th:href="@{/images/LOGO_noBg.png}">
+</head>
+
+
+<body>
+<div th:replace="fragments/admin-nav :: admin-nav"></div>
+
+
+		
+<div class="row" id="body-row">
+
+    <!-- Sidebar -->
+     <div id="sidebar-container" class="sidebar col-3">
+        <div class="list-group sticky-top sticky-offset">
+       
+       	
+			<h1 class="side-text" style="margin-top: 70px;">
+					<span>ADMIN</span>
+			</h1>
+				
+			<!--	------- SECTION ONE ----------  -->
+			<div class="side-text" style="margin-top: 15px;">
+				<a th:href="@{/adminDashboard/volunteerApplicants}" class="page-nav link">
+					<span>Volunteers</span>
+				</a>
+			</div>
+			
+			<!--	------- SECTION TWO ----------  -->
+				<div class="side-text" style="margin-top: 15px;">
+				<a th:href="@{/adminDashboard/customerApplicants}" class="page-nav active-link">
+					<span>Meal Recipients</span>
+				</a>
+			</div>
+        	
+        	<!--	------- SECTION THREE ----------  -->
+			<div class="side-text" style="margin-top: 15px;">
+				<a th:href="@{/adminDashboard/userList}" class="page-nav link">
+					<span>Admin Users</span>
+				</a>
+			</div>
+			
+			<!--	------- SECTION FOUR ----------  -->
+			<div class="side-text" style="margin-top: 15px;">
+				<a th:href="@{/adminDashboard/manage}" class="page-nav link">
+					<span>Manage Website</span>
+				</a>
+			</div>
+
+    </div>
+    </div> <!-- Side bar-container END -->
+
+
+    <!-- MAIN -->
+    <div class="col-8 main-content" >
+
+			<div style="margin-top: 90px; margin-bottom: 50px;">
+				<a th:href="@{/adminDashboard/customerApplicants}" class="link">Applicants</a>
+				<a th:href="@{/adminDashboard/customerList}" style="margin-left: 50px;" class="link">Active</a>
+				<a th:href="@{/adminDashboard/customerWaitlist}" style="margin-left: 50px;" class="active-link">Waitlist</a>
+				<a th:href="@{/adminDashboard/customerInactive}" style="margin-left: 50px;" class="link">Inactive</a>
+				<hr />
+				
+				<h2 style="margin-top: 50px;">Waitlisted Meal Recipients</h2>
+				<table style="width: 98%;">
+					<thead>
+						<tr>
+							<th style="width: 20%;">Name</th>
+							<th> Email</th>
+							<th> Household </th>
+							<th> Diet </th>
+							<th> City </th>
+							<th> </th>
+						</tr>
+					</thead>
+					<tbody th:if="${customerList != null and !customerList.empty}">
+			
+							<tr th:each="c, iStat : ${customerList}">
+								<td> 
+									<a th:href="@{/adminDashboard/viewCustomerInfo/{id}(id=${c.id})}" class="customer">
+										<span th:text="${c.firstName}"></span> <span th:text="${c.lastName}"></span>
+									</a>
+								</td>
+								<td th:text="${c.email}"> </td>
+								<td th:text="${c.numInHousehold}"> </td>
+								<td th:text="${c.dietaryOption}"> </td>
+								<td th:text="${c.city}"> </td>
+								
+							
+								<td><a th:href="@{/adminDashboard/viewCustomerInfo/{id}(id=${c.id})}" class="button">View</a></td>
+							
+						</tr>
+						
+					</tbody>
+					</table>
+	        </div>	
+		
+     </div>
+
+        
+		
+</div>
+   
+
+
+		
+   
+</body>
+</html>

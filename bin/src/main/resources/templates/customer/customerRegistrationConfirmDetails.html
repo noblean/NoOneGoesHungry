@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Customer Registration</title>
+
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" media="all" href="../static/css/style.css" th:href="@{/css/style.css}">
+		
+		<link rel="icon" type="image/x-icon" th:href="@{/images/LOGO_noBg.png}">
+		
+		<style>
+			body {
+				padding-top: 56px;
+				width:75%;
+				margin: auto;
+			}
+		</style>
+</head>
+
+
+<body>
+<!-- NavBar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-none fixed-top">
+  <div class="container">
+    <a class="navbar-brand" th:href="@{/}">
+        <img th:src="@{/images/LOGO_noBg.png}" width="60" height="40" class="d-inline-block align-top" alt="" style="padding-left: 20px">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/volunteer}">Volunteer Registration</a>
+        </li>
+	     <li class="nav-item">
+	        <a class="nav-link active" aria-current="page" th:href="@{/customer}">Meal Registration</a>
+	     </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">Donate</a>
+	     </li>
+	      <li class="nav-item">
+	        <a class="nav-link" th:href="@{/login}">Login</a>
+	     </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- NavBar END -->
+
+
+
+        <h1 style="padding-top: 50px;"  id="section-1">
+            Please confirm the information you have provided:
+        </h1>
+
+
+        <div class="card" >
+            <div class="card-body">
+				
+				<ul>
+					<li> <b>Name:</b> <span th:text="${customer.firstName}"></span>&nbsp;<span th:text="${customer.lastName}"></span> </li>
+					<li> <b>Email:</b>  <span th:text="${customer.email}"></span></li>
+					<li> <b>Phone Number:</b>  <span th:text="${customer.phone}"></span></li>
+					<li> <b>Dietary Option:</b>  <span th:text="${customer.dietaryOption}"></span></li>
+					<li> <b>Accommodations:</b>  <span th:text="${customer.accommodations}"></span></li>
+					<li> <b>Delivery address:</b>  <span th:text="${customer.address}"></span></li>
+					<li> <b>Postal Code:</b>  <span th:text="${customer.postal}"></span></li>
+					<li> <b>City:</b>  <span th:text="${customer.city}"></span></li>
+					<li> <b>Number of people in household:</b>  <span th:text="${customer.numInHousehold}"></span></li>
+					
+				</ul>
+				
+				<form method="post" action="confirmCustomer" th:object="${customer}">
+					<input type="hidden" th:field="*{id}" />
+					<input type="hidden" th:field="*{email}" />
+					<input type="hidden" th:field="*{firstName}" />
+					<input type="hidden" th:field="*{lastName}" />
+					<input type="hidden" th:field="*{phone}" />
+					<input type="hidden" th:field="*{accommodations}" />
+					<input type="hidden" th:field="*{dietaryOption}" />
+					<input type="hidden" th:field="*{address}" />
+					<input type="hidden" th:field="*{postal}" />
+					<input type="hidden" th:field="*{city}" />
+					<input type="hidden" th:field="*{numInHousehold}" />
+					
+					<input type="submit" value="Confirm" style="margin-bottom: 30px;" />
+					<a href="javascript:history.back()"> <button type="button" class="edit">Edit</button> </a>
+				</form>
+                
+            </div>
+        </div>
+     
+        <a th:href="@{/customer}"> <button class="cancel" >Cancel</button> </a>
+        
+   
+</body>
+</html>

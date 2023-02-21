@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" style="background-color: #151225;">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>NOGH - Login</title>
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    	
+		<link rel="stylesheet" type="text/css" media="all" href="../static/css/style.css" th:href="@{/css/style.css}">
+		
+		<link rel="icon" type="image/x-icon" th:href="@{/images/LOGO_noBg.png}">
+		
+		<style>
+			body {
+				margin-top: 56px;
+				width:75%;
+				margin: auto;
+				background-color: #151225;
+			}
+		</style>
+</head>
+
+
+<body>
+<div th:replace="fragments/nav :: nav"></div>
+
+    <div style="
+		width: 50%; 
+		margin: auto; 
+		margin-top: 150px; 
+		background-color: #D94141; 
+		color: #fff; 
+		padding: 5px;
+		border-radius: 6px 6px 0 0;
+		filter: drop-shadow(6px 6px 6px rgba(255, 255, 255, 0.05));
+		text-align: center;">
+			<p style="margin: 5px;"> Incorrect Email or Password</p>
+	</div>
+    <div style="
+		width: 50%; 
+		margin: auto; 
+		background-color: #323141; 
+		color: #fff; 
+		padding: 15px 50px 50px 50px;
+		border-radius: 0 0 6px 6px;
+		filter: drop-shadow(6px 6px 6px rgba(255, 255, 255, 0.05));">
+        	<form method="post" action="login" th:object="${account}">
+        	<input type="hidden" name="id" th:field="*{id}" />
+        	
+				<div>
+					<div class="container">
+						<div class="row">
+							<div class="col">
+								<label> Email:</label>
+								<input type="text" name="email" th:field="*{email}" required style="background-color: #51505F; color: #fff; box-shadow: none; border: none;" /> 
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label> Password: </label>
+								<input type="password" name="password" th:field="*{password}" required style="background-color: #51505F; color: #fff; box-shadow: none; border: none;" />
+							</div> 
+						</div>
+						<div class="row">
+							<div class="col">
+								<input type="submit" value="Submit" style="margin: 0; margin-top: 20px; width: 100%; background-color: #F7F5FF; color: #000000;  box-shadow: none;"/>
+							</div> 
+						</div>
+					</div>
+					
+				</div>
+			</form>
+        </div>
+
+		
+   
+</body>
+</html>
